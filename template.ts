@@ -6,8 +6,8 @@ function getRangeOffsetInContainer(containerNode: Node, rangeNode: Node, offset:
     const siblings = Array.from(currentNode.parentNode?.childNodes);
     for (const node of siblings) {
       if (node !== currentNode) {
-        const len = (node.innerText || node.data).length;
-        index += len;
+        const text = (node.innerText || node.data).toLowerCase().replaceAll('&nbsp;', ''); 
+        index += text.length;
       } else {
         break;
       }
