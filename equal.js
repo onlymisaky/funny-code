@@ -1,14 +1,26 @@
 function equalObject(o1, o2) {
-  const keys1 = Object.keys(o1);
-  const keys2 = Object.keys(o2);
+  let keys1 = [];
+  for (const key in o1) {
+    keys1.push(key);
+  }
+  let keys2 = [];
+  for (const key in o1) {
+    keys2.push(key);
+  }
 
   if (keys1.length !== keys2.length) {
     return false;
   }
 
-  if (JSON.stringify(keys1) !== JSON.stringify(keys2)) {
-    return false;
+  if (keys1.every((key) => !keys2.includes(key))) {
+    return false
   }
+
+  // keys1 = keys1.sort();
+  // keys2 = keys1.sort();
+  // if (JSON.stringify(keys1) !== JSON.stringify(keys2)) {
+  //   return false;
+  // }
 
   let result = true;
 
